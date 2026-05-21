@@ -125,6 +125,30 @@ with sd.InputStream(samplerate=sr, channels=1, blocksize= block, callback=audio_
         if len(tubes) < 8:
             tubes += generete_tubes(150)
             
+        keys = key.get_pressed()
+        if keys[K_r] and lose:
+            lose = False
+            score = 0
+            tubes = generete_tubes(150)
+            player.rect.y = window_size[1] //2 - 100
+            y_vel = 0
+
+        if player.rect.bottom > window_size[1]:
+            player.rect.bottom = window_size[1]
+            y_vel = 0.0
+
+        if player.rect.top < 0:
+            player.rect.top = 0
+            if y_vel < 0:
+                y_vel = 0.0
+        
+        if lose and wait > 1:
+            for t in tubes:
+                t.rect.x += 10
+            wait -= 1
+        else:
+            lose = False
+            wait = 40
 
 
         display.flip()
