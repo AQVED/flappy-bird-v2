@@ -109,7 +109,7 @@ with sd.InputStream(samplerate=sr, channels=1, blocksize= block, callback=audio_
 
 
         player.update(screen)
-
+####
         for t in tubes:
             if not lose:
                 t.move()
