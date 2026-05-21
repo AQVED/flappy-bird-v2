@@ -106,7 +106,7 @@ with sd.InputStream(samplerate=sr, channels=1, blocksize= block, callback=audio_
         y_vel += gravity
         player.rect.y += int(y_vel)
 
-
+##
 
         player.update(screen)
 ####
